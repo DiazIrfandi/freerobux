@@ -47,6 +47,7 @@ app.set("view engine", "ejs");
 
 // Halaman login
 app.get("/id/login", (req, res) => {
+  if (req.session.user) return res.redirect("/dashboard");
   res.render("login", { error: null });
 });
 
