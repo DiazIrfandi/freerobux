@@ -102,6 +102,15 @@
     </main>
 
     <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+    </script>
+
+    <script>
         function showError(message, duration = 4000) {
         const container = document.getElementById('popup-container');
 
