@@ -74,4 +74,4 @@ app.get("/logout", (req, res) => {
   res.redirect("/id/login");
 });
 
-app.listen(3000, () => console.log("Server jalan di port 3000"));
+export default app;
