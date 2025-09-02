@@ -3,6 +3,11 @@ import session from "express-session";
 import bodyParser from "body-parser";
 import TelegramBot from 'node-telegram-bot-api';
 import 'dotenv/config';
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -37,6 +42,7 @@ app.use(session({
 }));
 
 // Set EJS
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // Halaman login
